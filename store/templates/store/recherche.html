@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}Recherche - UpToConnect{% endblock %}
+
+{% block content %}
+<section class="page-content">
+    <h1>
+        {% if query %}
+            Résultats pour « {{ query }} »
+        {% else %}
+            Rechercher un produit
+        {% endif %}
+    </h1>
+
+    <div class="produits-grid">
+        {% for produit in produits %}
+            <div class="produit-card">
+                {% if produit.image %}
+                    <img src="{{ produit.image.url }}" alt="{{ produit.name }}">
+                {% endif %}
+                <h3>{{ produit.name }}</h3>
+                <p>{{ produit.price }} MAD</p>
+                <a href="{% url 'produit_detail' produit.slug %}">Voir le produit</a>
+            </div>
+        {% empty %}
+            {% if query %}
+                <p>Aucun produit ne correspond à votre recherche.</p>
+            {% endif %}
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

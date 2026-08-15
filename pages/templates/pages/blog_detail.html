@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}{{ article.title }} - UpToConnect{% endblock %}
+
+{% block content %}
+<section class="page-content blog-detail">
+    {% if article.image %}
+        <img src="{{ article.image.url }}" alt="{{ article.title }}">
+    {% endif %}
+    <h1>{{ article.title }}</h1>
+    <span class="blog-date">{{ article.created_at|date:"d M Y" }}</span>
+    <div class="blog-body">{{ article.content|linebreaks }}</div>
+    <a href="{% url 'blog_list' %}">← Retour au blog</a>
+</section>
+{% endblock %}

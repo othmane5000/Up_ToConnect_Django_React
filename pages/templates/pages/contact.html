@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+{% block title %}Contact - UpToConnect{% endblock %}
+
+{% block content %}
+
+<section class="hero">
+    <h1>Parlons de votre projet</h1>
+    <p>Décrivez-nous vos besoins. Notre équipe analyse votre demande et vous recontacte sous 24h — sans engagement.</p>
+</section>
+
+<section class="contact-section">
+    <div class="contact-grid">
+
+        <!-- COLONNE GAUCHE : infos, horaires, réseaux -->
+        <div class="contact-left">
+
+            <div class="info-card">
+                <h3>Coordonnées</h3>
+
+                <div class="info-item">
+                    <span class="info-icon">📞</span>
+                    <div>
+                        <div class="info-label">Téléphone</div>
+                        <a href="tel:+212 6 98 813 813">+212 6 98 813 813</a>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <span class="info-icon">✉️</span>
+                    <div>
+                        <div class="info-label">Email</div>
+                        <a href="mailto:contact@uptoconnect.ma">contact@uptoconnect.ma</a>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <span class="info-icon">📍</span>
+                    <div>
+                        <div class="info-label">Adresse</div>
+                        <p>53, rue Brahim Roudani , 2° étg., appt. 15, Océan 10040<br>Rabat, Maroc</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <span class="info-icon">🚚</span>
+                    <div>
+                        <div class="info-label">Livraison</div>
+                        <p>Partout au Maroc — Casablanca, Rabat, Marrakech & autres villes</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hours-card">
+                <h4>🕐 Horaires d'ouverture</h4>
+                <div class="hours-row">
+                    <span>Lundi – Vendredi</span>
+                    <span class="hours-badge">9h00 – 18h00</span>
+                </div>
+                <div class="hours-row">
+                    <span>Samedi</span>
+                    <span>Sur rendez-vous</span>
+                </div>
+                <div class="hours-row">
+                    <span>Dimanche</span>
+                    <span class="closed">Fermé</span>
+                </div>
+            </div>
+
+            <div class="socials-card">
+                <h4>Réseaux sociaux</h4>
+                <div class="socials-row">
+                    <a href="https://www.linkedin.com/company/uptoconnect" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                    <a href="https://www.instagram.com/uptoconnect" target="_blank" rel="noopener noreferrer">Instagram</a>
+                    <a href="https://wa.me/212 6 98 813 813?text=Bonjour%2C%20je%20souhaite%20un%20devis." target="_blank" rel="noopener noreferrer" class="whatsapp-link">WhatsApp</a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- COLONNE DROITE : formulaire -->
+        <div class="form-card">
+            <h2>Demandez votre devis gratuit</h2>
+            <p class="form-subtitle">Remplissez le formulaire, notre équipe vous recontacte sous 24h.</p>
+
+            {% if messages %}
+                {% for message in messages %}
+                    <p class="alert alert-{{ message.tags }}">{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+
+            <form method="post" novalidate>
+                {% csrf_token %}
+                {% for field in form %}
+                    <div class="form-group">
+                        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                        {{ field }}
+                        {% if field.errors %}
+                            <p class="field-error">{{ field.errors|striptags }}</p>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+                <button type="submit">Envoyer ma demande</button>
+                <p class="form-note">🔒 Vos données restent confidentielles et ne sont jamais revendues.</p>
+            </form>
+        </div>
+
+    </div>
+
+    <!-- CARTE GOOGLE MAPS -->
+  <div class="map-wrap">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2579.3092829866305!2d-6.853274525517585!3d34.01750261956604!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda76c65fb373781%3A0xe67ecf176da44757!2s53%20Av.%20Brahim%20Roudani%2C%20Rabat%2010000!5e1!3m2!1sfr!2sma!4v1784110831333!5m2!1sfr!2sma"
+        width="100%" height="350" style="border:0;" allowfullscreen=""
+        loading="lazy" referrerpolicy="strict-origin-when-cross-origin">
+    </iframe>
+    <div class="map-badge">
+        <strong>UpToConnect</strong>
+        <span>53, Rue Brahim Roudani — Océan, Rabat</span>
+    </div>
+</div>
+</section>
+
+<!-- BOUTON WHATSAPP FLOTTANT -->
+<a class="wa-float" href="https://wa.me/212669272386?text=Bonjour%2C%20je%20souhaite%20un%20devis." target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+    💬
+</a>
+
+{% endblock %}

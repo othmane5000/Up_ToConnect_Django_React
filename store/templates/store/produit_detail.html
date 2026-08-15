@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ produit.name }} - UpToConnect{% endblock %}
+
+{% block content %}
+<section class="produit-detail">
+    {% if produit.image %}
+        <img src="{{ produit.image.url }}" alt="{{ produit.name }}">
+    {% endif %}
+    <div>
+        <h1>{{ produit.name }}</h1>
+        <p class="prix">{{ produit.price }} MAD</p>
+        <p>{{ produit.description|linebreaks }}</p>
+
+        {% if produit.stock > 0 %}
+            
+            <form action="{% url 'cart_add' produit.id %}" method="post" class="add-to-cart-form">
+                {% csrf_token %}
+                <input type="number" name="quantity" value="1" min="1" max="{{ produit.stock }}">
+                <button type="submit">Ajouter au panier</button>
+            </form>
+        {% else %}
+            <p class="stock-rupture">✘ Rupture de stock</p>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}Connexion - UpToConnect{% endblock %}
+
+{% block content %}
+<section class="auth-form">
+    <h1>Connexion</h1>
+
+    {% if messages %}
+        {% for message in messages %}
+            <p class="alert alert-{{ message.tags }}">{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+
+    <form method="post" novalidate>
+        {% csrf_token %}
+        {% for field in form %}
+            <div class="form-group">
+                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                {{ field }}
+            </div>
+        {% endfor %}
+        <button type="submit">Se connecter</button>
+    </form>
+
+    <p>Pas encore de compte ? <a href="{% url 'register' %}">Inscrivez-vous</a></p>
+</section>
+{% endblock %}

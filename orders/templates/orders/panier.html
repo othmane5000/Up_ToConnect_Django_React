@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+{% block title %}Mon panier - UpToConnect{% endblock %}
+
+{% block content %}
+<section class="panier">
+
+    <!-- Indicateur d'étapes (cohérent avec checkout) -->
+    <div class="checkout-steps">
+        <div class="step active">
+            <span class="step-circle">1</span>
+            <span class="step-label">Panier</span>
+        </div>
+        <div class="step-line"></div>
+        <div class="step">
+            <span class="step-circle">2</span>
+            <span class="step-label">Confirmation</span>
+        </div>
+        <div class="step-line"></div>
+        <div class="step">
+            <span class="step-circle">3</span>
+            <span class="step-label">Paiement</span>
+        </div>
+    </div>
+
+    <div class="checkout-header">
+        <h1>Mon panier</h1>
+        <p>Vérifiez vos articles avant de passer commande.</p>
+    </div>
+
+    {% if messages %}
+        {% for message in messages %}
+            <p class="alert alert-{{ message.tags }}">{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+
+    {% if cart|length > 0 %}
+        <div class="checkout-card">
+            <div class="checkout-summary">
+                {% for item in cart %}
+                    <div class="panier-item">
+                        {% if item.product.image %}
+                            <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" class="checkout-item-img">
+                        {% else %}
+                            <div class="checkout-item-img placeholder"></div>
+                        {% endif %}
+
+                        <div class="panier-item-info">
+                            <h3>{{ item.product.name }}</h3>
+                            <span class="checkout-qty">{{ item.unit_price }} MAD / unité</span>
+                        </div>
+
+                        <form action="{% url 'cart_update' item.product.id %}" method="post" class="quantity-form">
+                            {% csrf_token %}
+                            <input
+                                type="number"
+                                name="quantity"
+                                value="{{ item.quantity }}"
+                                min="1"
+                                max="{{ item.product.stock }}"
+                                class="qty-input"
+                                data-unit-price="{{ item.unit_price }}"
+                                data-subtotal-target="subtotal-{{ item.product.id }}"
+                            >
+                            <button type="submit" aria-label="Modifier">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                            </button>
+                        </form>
+
+                        <span class="panier-subtotal" id="subtotal-{{ item.product.id }}" data-value="{{ item.subtotal }}">{{ item.subtotal }} MAD</span>
+
+                        <form action="{% url 'cart_remove' item.product.id %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit" class="btn-remove" aria-label="Supprimer">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="3 6 5 6 21 6"/>
+                                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                                </svg>
+                            </button>
+                        </form>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <div class="checkout-total">
+                <span>Total</span>
+                <strong id="cart-total">{{ cart.get_total }} MAD</strong>
+            </div>
+        </div>
+
+        <div class="panier-actions">
+            <a href="{% url 'home' %}" class="btn-continue-shopping">← Continuer mes achats</a>
+            <a href="{% url 'checkout' %}" class="btn-checkout-gradient btn-checkout-link">Passer la commande</a>
+        </div>
+
+    {% else %}
+        <div class="panier-empty">
+            <svg class="empty-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="9" cy="21" r="1"/>
+                <circle cx="20" cy="21" r="1"/>
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+            </svg>
+            <h2>Votre panier est vide</h2>
+            <p>Découvrez notre catalogue et trouvez l'équipement qu'il vous faut.</p>
+            <a href="{% url 'home' %}" class="btn-continue">Voir nos produits</a>
+        </div>
+    {% endif %}
+</section>
+{% endblock %}

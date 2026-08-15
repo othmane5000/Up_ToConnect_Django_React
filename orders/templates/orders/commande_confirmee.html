@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block title %}Commande confirmée - UpToConnect{% endblock %}
+
+{% block content %}
+<section class="checkout-page">
+
+    <!-- Indicateur d'étapes : tout est terminé -->
+    <div class="checkout-steps">
+        <div class="step done">
+            <span class="step-circle">✓</span>
+            <span class="step-label">Panier</span>
+        </div>
+        <div class="step-line done"></div>
+        <div class="step done">
+            <span class="step-circle">✓</span>
+            <span class="step-label">Confirmation</span>
+        </div>
+        <div class="step-line done"></div>
+        <div class="step done">
+            <span class="step-circle">✓</span>
+            <span class="step-label">Paiement</span>
+        </div>
+    </div>
+
+    <div class="confirmation-card">
+       <div class="confirmation-icon">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="20 6 9 17 4 12"/>
+    </svg>
+</div>
+
+        <h1>Merci pour votre commande !</h1>
+        <p class="confirmation-subtitle">Votre commande a bien été enregistrée et est en cours de traitement.</p>
+
+        <div class="confirmation-details">
+            <div class="confirmation-row">
+                <span>Numéro de commande</span>
+                <strong>#{{ order.id }}</strong>
+            </div>
+            <div class="confirmation-row">
+                <span>Total payé</span>
+                <strong>{{ order.total }} MAD</strong>
+            </div>
+            <div class="confirmation-row">
+                <span>Statut</span>
+                <span class="status-badge">{{ order.get_status_display }}</span>
+            </div>
+        </div>
+
+        <p class="confirmation-note">Un email de confirmation a été envoyé à votre adresse. Notre équipe vous contactera pour organiser la livraison.</p>
+
+        <a href="{% url 'home' %}" class="btn-checkout-gradient btn-checkout-link">Retour à l'accueil</a>
+    </div>
+</section>
+{% endblock %}

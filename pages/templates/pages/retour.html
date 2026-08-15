@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block title %}Politique de retour - UpToConnect{% endblock %}
+
+{% block content %}
+<section class="page-content legal-page">
+    <h1>Politique de retour et de remboursement</h1>
+
+    <p>Chez UpToConnect, votre satisfaction est notre priorité. Cette page détaille les conditions dans lesquelles vous pouvez retourner un produit et obtenir un remboursement.</p>
+
+    <h2>1. Délai de rétractation</h2>
+    <p>Vous disposez d'un délai de <strong>7 jours ouvrables</strong> à compter de la date de réception de votre commande pour nous faire part de votre souhait de retourner un ou plusieurs produits, sans avoir à justifier de motif.</p>
+
+    <h2>2. Conditions de retour</h2>
+    <p>Pour être accepté, le produit retourné doit respecter les conditions suivantes :</p>
+    <ul>
+        <li>Être dans son emballage d'origine, complet et non endommagé</li>
+        <li>Ne pas avoir été utilisé, installé ou monté</li>
+        <li>Être accompagné de la facture ou preuve d'achat</li>
+        <li>Tous les accessoires et documents fournis doivent être inclus</li>
+    </ul>
+
+    <h2>3. Comment effectuer un retour</h2>
+    <ol>
+        <li>Contactez notre service client via la <a href="{% url 'contact' %}">page de contact</a> en précisant le numéro de commande</li>
+        <li>Notre équipe vous confirme l'éligibilité du retour et vous communique la marche à suivre</li>
+        <li>Emballez soigneusement le produit et retournez-le à l'adresse indiquée</li>
+        <li>Une fois le produit reçu et vérifié, le remboursement est déclenché</li>
+    </ol>
+
+    <h2>4. Frais de retour</h2>
+    <p>Les frais de retour sont à la charge du client, sauf dans le cas où le produit reçu est défectueux, endommagé, ou ne correspond pas à la commande initiale — auquel cas UpToConnect prend en charge l'intégralité des frais de retour et de remplacement.</p>
+
+    <h2>5. Délai de remboursement</h2>
+    <p>Une fois le produit retourné réceptionné et contrôlé par notre équipe, le remboursement est effectué sous un délai de <strong>5 à 10 jours ouvrables</strong>, via le même moyen de paiement utilisé lors de l'achat initial.</p>
+
+    <h2>6. Produits exclus du droit de retour</h2>
+    <p>Certains produits ne peuvent faire l'objet d'un retour, sauf défaut de fabrication avéré :</p>
+    <ul>
+        <li>Produits installés ou configurés chez le client</li>
+        <li>Produits personnalisés sur demande spécifique</li>
+        <li>Produits dont l'emballage de protection a été descellé (selon la nature du produit)</li>
+    </ul>
+
+    <h2>7. Produits défectueux</h2>
+    <p>Si vous recevez un produit défectueux ou endommagé lors du transport, contactez-nous immédiatement avec des photos à l'appui via notre <a href="{% url 'contact' %}">formulaire de contact</a>. Nous procéderons à un remplacement ou un remboursement intégral sans frais.</p>
+</section>
+{% endblock %}

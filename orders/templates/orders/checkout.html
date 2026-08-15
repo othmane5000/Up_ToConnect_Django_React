@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% block title %}Confirmer la commande - UpToConnect{% endblock %}
+
+{% block content %}
+<section class="checkout-page">
+
+    <!-- Indicateur d'étapes -->
+    <div class="checkout-steps">
+        <div class="step done">
+            <span class="step-circle">✓</span>
+            <span class="step-label">Panier</span>
+        </div>
+        <div class="step-line done"></div>
+        <div class="step active">
+            <span class="step-circle">2</span>
+            <span class="step-label">Confirmation</span>
+        </div>
+        <div class="step-line"></div>
+        <div class="step">
+            <span class="step-circle">3</span>
+            <span class="step-label">Paiement</span>
+        </div>
+    </div>
+
+    <div class="checkout-header">
+        <h1>Confirmer votre commande</h1>
+        <p>Vérifiez les articles et le montant avant de valider.</p>
+    </div>
+
+    <div class="checkout-card">
+        <div class="checkout-summary">
+            {% for item in cart %}
+                <div class="checkout-item">
+                    {% if item.product.image %}
+                        <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" class="checkout-item-img">
+                    {% else %}
+                        <div class="checkout-item-img placeholder"></div>
+                    {% endif %}
+
+                    <div class="checkout-item-info">
+                        <h3>{{ item.product.name }}</h3>
+                        <span class="checkout-qty">Quantité : {{ item.quantity }} × {{ item.unit_price }} MAD</span>
+                    </div>
+
+                    <span class="checkout-subtotal">{{ item.subtotal }} MAD</span>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="checkout-total">
+            <span>Total à payer</span>
+            <strong>{{ cart.get_total }} MAD</strong>
+        </div>
+    </div>
+
+    <form method="post" class="checkout-form">
+        {% csrf_token %}
+        <button type="submit" class="btn-checkout-gradient">Confirmer la commande</button>
+        <p class="checkout-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="11" width="18" height="11" rx="2"/>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+            </svg>
+            Paiement 100% sécurisé — vos informations sont protégées.
+        </p>
+    </form>
+</section>
+{% endblock %}

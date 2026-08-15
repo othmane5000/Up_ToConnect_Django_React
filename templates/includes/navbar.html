@@ -1,0 +1,52 @@
+{% load static %}
+<header class="navbar">
+    <div class="navbar-container">
+        <a href="{% url 'home' %}" class="logo">UpToConnect</a>
+
+        <nav class="nav-links">
+            <a href="{% url 'categorie' 'tab' %}">Tableau interactif</a>
+            <a href="{% url 'categorie' 'vis' %}">Visioconférence</a>
+            <a href="{% url 'categorie' 'son' %}">Sonorisation</a>
+            <a href="{% url 'categorie' 'res' %}">Réseaux / VoIP</a>
+            <a href="{% url 'categorie' 'sec' %}">Sécurité</a>
+            <a href="{% url 'categorie' 'acc' %}">Accessoires</a>
+        </nav>
+
+        <div class="search-wrapper">
+            <form action="{% url 'recherche' %}" method="get" class="search-form" autocomplete="off">
+                <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="7"/>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                </svg>
+                <input type="text" name="q" id="search-input" placeholder="Rechercher un produit..." value="{{ request.GET.q }}" maxlength="100">
+            </form>
+            <div id="search-suggestions" class="search-suggestions"></div>
+        </div>
+
+        <div class="nav-icons">
+            <a href="{% url 'panier' %}" aria-label="Panier">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="9" cy="21" r="1"/>
+                    <circle cx="20" cy="21" r="1"/>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+                </svg>
+            </a>
+
+            {% if user.is_authenticated %}
+                <a href="{% url 'profil' %}" aria-label="Mon compte">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                        <circle cx="12" cy="7" r="4"/>
+                    </svg>
+                </a>
+            {% else %}
+                <a href="{% url 'login' %}" aria-label="Connexion">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                        <circle cx="12" cy="7" r="4"/>
+                    </svg>
+                </a>
+            {% endif %}
+        </div>
+    </div>
+</header>

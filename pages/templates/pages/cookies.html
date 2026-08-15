@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %}Politique de cookies - UpToConnect{% endblock %}
+
+{% block content %}
+<section class="page-content legal-page">
+    <h1>Politique de cookies</h1>
+    
+
+    <p>La présente politique explique comment UpToConnect utilise les cookies et technologies similaires sur son site internet, conformément à la réglementation marocaine en vigueur relative à la protection des données personnelles.</p>
+
+    <h2>1. Qu'est-ce qu'un cookie ?</h2>
+    <p>Un cookie est un petit fichier texte déposé sur votre ordinateur, tablette ou smartphone lors de la visite d'un site internet. Il permet au site de mémoriser vos actions et préférences pendant une période donnée, afin d'améliorer votre expérience de navigation.</p>
+
+    <h2>2. Pourquoi utilisons-nous des cookies ?</h2>
+    <p>Les cookies utilisés sur UpToConnect servent exclusivement à assurer le bon fonctionnement du site et à améliorer votre expérience d'achat.</p>
+
+    <h2>3. Types de cookies utilisés</h2>
+    <ul>
+        <li><strong>Cookies strictement nécessaires</strong> — indispensables au fonctionnement du site : gestion de votre session de connexion, mémorisation du contenu de votre panier, protection contre les attaques (jeton de sécurité CSRF).</li>
+        <li><strong>Cookies de préférence</strong> — mémorisent certains de vos choix pour vous éviter de les ressaisir à chaque visite.</li>
+    </ul>
+    <p>UpToConnect n'utilise aucun cookie publicitaire ni cookie de traçage à des fins commerciales tierces.</p>
+
+    <h2>4. Durée de conservation</h2>
+    <p>Les cookies de session sont automatiquement supprimés à la fermeture de votre navigateur ou après 30 minutes d'inactivité. Aucun cookie n'est conservé au-delà de ce qui est strictement nécessaire à son usage.</p>
+
+    <h2>5. Comment gérer les cookies ?</h2>
+    <p>Vous pouvez à tout moment configurer votre navigateur pour refuser les cookies ou être averti avant leur dépôt. Sachez toutefois que la désactivation des cookies essentiels peut empêcher certaines fonctionnalités du site de fonctionner correctement, notamment la gestion du panier et de votre session de connexion.</p>
+
+    <h2>6. Contact</h2>
+    <p>Pour toute question relative à cette politique de cookies, vous pouvez nous contacter via notre <a href="{% url 'contact' %}">page de contact</a>.</p>
+</section>
+{% endblock %}

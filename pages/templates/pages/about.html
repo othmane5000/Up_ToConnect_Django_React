@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block title %}À propos - UpToConnect{% endblock %}
+
+{% block content %}
+
+<section class="hero">
+    <h1>Votre partenaire technologique de confiance</h1>
+    <p>Depuis notre création, UpToConnect équipe les entreprises, écoles et administrations marocaines en solutions technologiques fiables et performantes.</p>
+</section>
+
+<section class="page-content">
+
+    <h2>Notre histoire</h2>
+    <p>UpToConnect est né d'une conviction simple : les entreprises marocaines méritent un accès facile à du matériel informatique professionnel de qualité, accompagné d'un service client à la hauteur. Nous avons construit notre catalogue autour de trois piliers essentiels à la transformation digitale des organisations modernes : la sonorisation professionnelle, les tableaux interactifs pour l'éducation et le travail collaboratif, et les systèmes de vidéosurveillance pour la sécurité des locaux.</p>
+
+    <h2>Notre mission</h2>
+    <p>Fournir à nos clients des équipements technologiques certifiés, un accompagnement personnalisé avant et après-vente, et une expérience d'achat simple, transparente et sécurisée — que ce soit pour équiper une seule salle de réunion ou l'ensemble d'un établissement scolaire.</p>
+
+    <h2>Nos valeurs</h2>
+    <ul>
+        <li><strong>Qualité</strong> — nous sélectionnons uniquement des marques reconnues et des produits garantis constructeur.</li>
+        <li><strong>Transparence</strong> — prix clairs, sans frais cachés, conditions de vente et de retour explicites.</li>
+        <li><strong>Réactivité</strong> — un support technique disponible pour répondre rapidement à vos besoins.</li>
+        <li><strong>Sécurité</strong> — protection stricte de vos données personnelles et de vos transactions.</li>
+    </ul>
+
+    <h2>Pourquoi nous choisir</h2>
+    <div class="about-grid">
+        <div class="about-card">
+            <span class="about-icon">🛡️</span>
+            <h3>Produits garantis</h3>
+            <p>Tous nos équipements bénéficient d'une garantie constructeur et sont testés avant expédition.</p>
+        </div>
+        <div class="about-card">
+            <span class="about-icon">🔒</span>
+            <h3>Paiement sécurisé</h3>
+            <p>Vos transactions sont protégées à chaque étape du processus d'achat.</p>
+        </div>
+        <div class="about-card">
+            <span class="about-icon">🚚</span>
+            <h3>Livraison nationale</h3>
+            <p>Nous livrons partout au Maroc, avec un suivi transparent de votre commande.</p>
+        </div>
+        <div class="about-card">
+            <span class="about-icon">🎧</span>
+            <h3>Support expert</h3>
+            <p>Une équipe technique disponible pour vous conseiller avant et après votre achat.</p>
+        </div>
+    </div>
+
+    <h2>Notre engagement envers vous</h2>
+    <p>Chez UpToConnect, chaque commande est traitée avec le même niveau d'exigence, qu'il s'agisse d'un particulier ou d'une grande entreprise. Notre équipe reste à votre disposition pour toute question technique ou commerciale via notre <a href="{% url 'contact' %}">page de contact</a>.</p>
+
+</section>
+{% endblock %}

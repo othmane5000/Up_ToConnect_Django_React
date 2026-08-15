@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block title %}Politique de confidentialité - UpToConnect{% endblock %}
+
+{% block content %}
+<section class="page-content legal-page">
+    <h1>Politique de confidentialité</h1>
+    
+
+    <p>UpToConnect accorde une importance primordiale à la protection de vos données personnelles. Cette politique décrit quelles informations nous collectons, comment nous les utilisons, et quels sont vos droits, conformément à la loi n°09-08 relative à la protection des personnes physiques à l'égard du traitement des données à caractère personnel.</p>
+
+    <h2>1. Données que nous collectons</h2>
+    <ul>
+        <li><strong>Données d'identification</strong> : nom, prénom, adresse email</li>
+        <li><strong>Données de commande</strong> : adresse de livraison, historique d'achats</li>
+        <li><strong>Données de connexion</strong> : identifiant, mot de passe (stocké de manière chiffrée, jamais en clair)</li>
+        <li><strong>Données de contact</strong> : informations transmises via notre formulaire de contact</li>
+    </ul>
+
+    <h2>2. Finalité du traitement</h2>
+    <p>Vos données sont collectées uniquement pour :</p>
+    <ul>
+        <li>Créer et gérer votre compte client</li>
+        <li>Traiter et livrer vos commandes</li>
+        <li>Vous contacter en cas de besoin concernant votre commande</li>
+        <li>Répondre à vos demandes via le formulaire de contact</li>
+        <li>Améliorer la sécurité et le fonctionnement du site</li>
+    </ul>
+
+    <h2>3. Partage des données</h2>
+    <p>UpToConnect ne vend, ne loue et ne partage jamais vos données personnelles avec des tiers à des fins commerciales. Vos informations peuvent être partagées uniquement avec nos partenaires logistiques strictement dans le cadre de la livraison de vos commandes.</p>
+
+    <h2>4. Sécurité des données</h2>
+    <p>Nous mettons en œuvre des mesures techniques rigoureuses pour protéger vos informations :</p>
+    <ul>
+        <li>Chiffrement des mots de passe (jamais stockés en clair)</li>
+        <li>Protection contre les tentatives de connexion frauduleuses</li>
+        <li>Connexion sécurisée pour toutes les transactions</li>
+        <li>Accès restreint aux données, réservé au personnel autorisé</li>
+    </ul>
+
+    <h2>5. Durée de conservation</h2>
+    <p>Vos données sont conservées aussi longtemps que votre compte est actif, ou conformément aux obligations légales en matière de conservation des documents commerciaux.</p>
+
+    <h2>6. Vos droits</h2>
+    <p>Conformément à la loi 09-08, vous disposez des droits suivants concernant vos données personnelles :</p>
+    <ul>
+        <li>Droit d'accès à vos données</li>
+        <li>Droit de rectification en cas d'inexactitude</li>
+        <li>Droit de suppression de votre compte et de vos données</li>
+        <li>Droit d'opposition au traitement de vos données</li>
+    </ul>
+    <p>Pour exercer l'un de ces droits, contactez-nous via notre <a href="{% url 'contact' %}">page de contact</a>.</p>
+</section>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ categorie_label }} - UpToConnect{% endblock %}
+
+{% block content %}
+<section class="categorie-hero categorie-{{ categorie_color }}">
+    <h1>{{ categorie_label }}</h1>
+</section>
+
+<section class="produits-grid">
+    {% for produit in produits %}
+        <a href="{% url 'produit_detail' produit.slug %}" class="produit-card">
+            {% if produit.image %}
+                <img src="{{ produit.image.url }}" alt="{{ produit.name }}">
+            {% endif %}
+            <h3>{{ produit.name }}</h3>
+            <p>{{ produit.price }} MAD</p>
+            <span class="produit-btn">Demande Devis</span>
+        </a>
+    {% empty %}
+        <p>Aucun produit dans cette catégorie pour le moment.</p>
+    {% endfor %}
+</section>
+
+{% endblock %}
